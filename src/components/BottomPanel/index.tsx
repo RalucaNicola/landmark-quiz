@@ -1,19 +1,9 @@
 import * as styles from './BottomPanel.module.css';
-import '@esri/calcite-components/dist/components/calcite-action';
-import '@esri/calcite-components/dist/components/calcite-label';
-import '@esri/calcite-components/dist/components/calcite-switch';
-import { CalciteAction } from '@esri/calcite-components-react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/storeConfiguration';
-import CountriesMenu from '../CountriesMenu';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { motion } from 'framer-motion';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { setInfoModalOptions } from '../../store/services/modal-options/modalSlice';
 import { AppMode, setMode } from '../../store/services/appModeSlice';
 import { selectRandomLandmark } from '../../store/services/landmark-selection/landmarkSelectionThunk';
-import { Landmark } from '../../store/services/landmark-selection/landmarkSelectionSlice';
 
 interface CorrectAnswer {
   value: boolean;
@@ -32,8 +22,6 @@ const BottomPanel = () => {
     </div></>;
 
   const renderLoading = () => (<>Loading...</>);
-
-
 
   return (
     <div className={styles.container}>
