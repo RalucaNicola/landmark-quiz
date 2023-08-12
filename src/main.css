@@ -9,17 +9,19 @@ body,
   width: 100%;
   font-family: var(--calcite-sans-family);
   color: var(--calcite-ui-text-1);
-  background: #a8a8a8;
+  background: #000;
 }
 
 .calcite-mode-dark,
 :root {
   --calcite-ui-brand: rgb(0, 217, 109);
   --calcite-ui-brand-hover: #04532c;
-  --border-radius: 10px;
-  --box-shadow: 0 0 12px rgb(0 0 0 / 100%);
+  --border-radius: 5px;
+  --border: 2px solid rgb(237, 42, 130);
+  --box-shadow: 4px 4px 0 rgb(237, 42, 130);
   --margin: 15px;
-  --background-color: rgba(50 50 50 / 60%);
+  --padding: 15px;
+  --background-color: rgba(254, 215, 232, 1);
   --calcite-font-size--1: 0.85rem;
   --calcite-ui-text-1: rgb(230, 230, 230);
   --calcite-ui-text-2: rgb(210, 210, 210);
@@ -34,6 +36,11 @@ a {
 
 a:hover {
   color: var(--calcite-ui-text-1);
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 /* remove outline from map */

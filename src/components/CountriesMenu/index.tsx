@@ -9,7 +9,7 @@ import { CalciteSelect, CalciteOption } from '@esri/calcite-components-react';
 import { RootState } from '../../store/storeConfiguration';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { highlightCountryFromList } from '../../store/services/country-selection/countrySelectionThunk';
+import { highlightCountryFromList } from '../../store/services/landmark-selection/landmarkSelectionThunk';
 import { DSVRowArray } from 'd3';
 import { useEffect } from 'react';
 

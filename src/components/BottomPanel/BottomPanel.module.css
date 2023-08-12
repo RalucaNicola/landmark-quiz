@@ -1,37 +1,41 @@
 .container {
-  composes: background from '../../utils/utils.module.css';
   position: absolute;
   bottom: var(--margin);
   left: var(--margin);
   right: var(--margin);
+}
+
+.card {
+  composes: background from '../../utils/utils.module.css';
+  width: min(600px, 60%);
+  margin: 0 auto;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  padding: 15px;
-  border: 1px solid rgba(255 255 255 / 20%);
+  padding: var(--padding);
+}
+.card p {
+  text-align: center;
 }
 
-.actionsContainer {
+.buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: var(--margin);
+}
+
+.menuButton {
+  composes: background from '../../utils/utils.module.css';
+  border-radius: var(--border-radius);
+  border: var(--border);
+  padding: var(--padding);
+  color: var(--calcite-ui-text-1);
   font-size: var(--calcite-font-size--1);
-  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
 }
 
-.leftActionsContainer {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.rightActionsContainer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.selectedCountry {
-  color: var(--calcite-ui-brand);
-  font-weight: bold;
+.noPointerEvents {
+  pointer-events: none;
 }
 
 @media (max-width: 700px) {

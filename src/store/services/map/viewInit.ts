@@ -1,39 +1,53 @@
-import PortalItem from '@arcgis/core/portal/PortalItem';
-import WebMap from '@arcgis/core/WebMap';
-import { mapConfig } from '../../../config';
-import MapView from '@arcgis/core/views/MapView';
 import { setGlobalView } from '../../globals';
 import { AppDispatch } from '../../storeConfiguration';
 import { setViewLoaded } from '../app-loading/loadingSlice';
-import { getMapCenterFromHashParams } from '../../../utils/URLHashParams';
 import { setError } from '../error-messaging/errorSlice';
-import { initializeCountryLayer } from './countryLayerInit';
+import { initializeLandmarksLayer } from './landmarksLayerInit';
 import { initializeViewEventListeners } from './eventListeners';
+import SceneView from '@arcgis/core/views/SceneView';
+import WebScene from '@arcgis/core/WebScene';
+import { setLowPolyLayers } from './lowPolyLayers';
+import { Point } from '@arcgis/core/geometry';
 
 
-export const initializeMapView = (divRef: HTMLDivElement) => async (dispatch: AppDispatch) => {
+export const initializeView = (divRef: HTMLDivElement) => async (dispatch: AppDispatch) => {
     try {
-        const portalItem = new PortalItem({
-            id: mapConfig['web-map-id']
-        });
-
-        await portalItem.load();
-        const webmap = new WebMap({
-            portalItem: portalItem
-        });
-        await webmap.load();
-        const mapView = new MapView({
+        const scene = new WebScene({
+            ground: {
+                opacity: 1,
+                surfaceColor: [255, 255, 255]
+            },
+        })
+        const view = new SceneView({
             container: divRef,
-            map: webmap,
-            padding: {
-                top: 50,
-                bottom: 0
+            map: scene,
+            spatialReference: {
+                wkid: 4326
             },
             ui: {
                 components: []
             },
-            constraints: {
-                minZoom: 1
+            environment: {
+                // background: {
+                //     type: "color",
+                //     color: [0, 0, 0, 0]
+                // },
+                lighting: {
+                    directShadowsEnabled: true,
+                    type: "virtual"
+                },
+                // starsEnabled: false,
+                // atmosphereEnabled: false
+            },
+            qualityProfile: "high",
+            camera: {
+                position: new Point({
+                    longitude: -40.87121836,
+                    latitude: 18.27310155,
+                    z: 25512342.69650
+                }),
+                heading: 0.00,
+                tilt: 0.10
             },
             popup: {
                 dockEnabled: true,
@@ -47,16 +61,15 @@ export const initializeMapView = (divRef: HTMLDivElement) => async (dispatch: Ap
             }
         });
 
-        await mapView.when(() => {
-            setGlobalView(mapView);
-            dispatch(setViewLoaded(true));
-            const mapCenter = getMapCenterFromHashParams();
-            if (mapCenter) {
-                mapView.goTo({ zoom: mapCenter.zoom, center: [mapCenter.center.lon, mapCenter.center.lat] });
+        await view.when(async () => {
+            setGlobalView(view);
+            const lowPolyLayersLoaded = await setLowPolyLayers(view);
+            const landmarksLayerLoaded = await initializeLandmarksLayer(view);
+            if (lowPolyLayersLoaded && landmarksLayerLoaded) {
+                dispatch(setViewLoaded(true));
             }
-            dispatch(initializeCountryLayer());
-            //window.view = mapView;
-            dispatch(initializeViewEventListeners());
+            (window as any).view = view;
+            //dispatch(initializeViewEventListeners());
         });
     } catch (error) {
         const { message } = error;

@@ -1,16 +1,16 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import countryReducer from './services/country-selection/countrySelectionSlice';
+import landmarkSelectionReducer from './services/landmark-selection/landmarkSelectionSlice';
 import loadingReducer from './services/app-loading/loadingSlice';
 import errorReducer from './services/error-messaging/errorSlice';
-import authenticationReducer from './services/authentication/authenticationSlice';
 import modalOptionsReducer from './services/modal-options/modalSlice';
+import appModeReducer from './services/appModeSlice';
 
 const rootReducer = combineReducers({
-  authentication: authenticationReducer,
   error: errorReducer,
   loading: loadingReducer,
-  country: countryReducer,
-  infoModal: modalOptionsReducer
+  landmarkSelection: landmarkSelectionReducer,
+  infoModal: modalOptionsReducer,
+  appMode: appModeReducer
 });
 
 export const store = configureStore({

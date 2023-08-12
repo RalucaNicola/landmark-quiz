@@ -8,64 +8,52 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/storeConfiguration';
 import CountriesMenu from '../CountriesMenu';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { getCountryData } from '../../store/globals';
 import { motion } from 'framer-motion';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { setInfoModalOptions } from '../../store/services/modal-options/modalSlice';
+import { AppMode, setMode } from '../../store/services/appModeSlice';
+import { selectRandomLandmark } from '../../store/services/landmark-selection/landmarkSelectionThunk';
+import { Landmark } from '../../store/services/landmark-selection/landmarkSelectionSlice';
+
+interface CorrectAnswer {
+  value: boolean;
+}
 
 const BottomPanel = () => {
-  const [visible, setVisible] = useState(true);
-  const selectedCountry = useSelector((state: RootState) => state.country);
-  const eutrophicationDataLoaded = useAppSelector((state) => state.loading.countryDataLoaded);
-  const countryData = eutrophicationDataLoaded ? getCountryData() : null;
   const dispatch = useAppDispatch();
+  const appLoaded = useAppSelector((state) => state.loading.viewLoaded && state.loading.questionsLoaded);
+  const selectedLandmark = useAppSelector((state) => state.landmarkSelection);
+  const [correctAnswer, setCorrectAnswer] = useState<CorrectAnswer | null>(null);
+  const renderIntro = () => <>
+    <p>Learn about landmarks around the world by answering questions</p>
+    <div className={styles.buttons}>
+      <button className={styles.menuButton} onClick={() => { dispatch(setMode(AppMode.Explore)); setCorrectAnswer(null); }}>Explore map</button>
+      <button className={styles.menuButton} onClick={() => { dispatch(setMode(AppMode.Question)); setCorrectAnswer(null); dispatch(selectRandomLandmark()); }}>Go to random landmark</button>
+    </div></>;
 
-  const togglePanel = () => {
-    setVisible(!visible);
-  };
+  const renderLoading = () => (<>Loading...</>);
 
-  const getHeader = () => {
-    return (
-      <div className={styles.actionsContainer}>
-        <div className={styles.leftActionsContainer}>
-          {selectedCountry && selectedCountry.name ? (
-            <div>
-              <span>
-                <span className={styles.selectedCountry}>{selectedCountry.name}</span>
-              </span>
-            </div>
-          ) : (
-            <div>Select a country in the menu or on the map.</div>
-          )}
-        </div>
-        <div className={styles.rightActionsContainer}>
-          <CalciteAction
-            icon='information-f'
-            scale='s'
-            appearance='transparent'
-            text=''
-            onClick={() => dispatch(setInfoModalOptions({ visible: true }))}
-          ></CalciteAction>
-          <CalciteAction
-            icon={visible ? 'chevronDown' : 'chevronUp'}
-            scale='s'
-            appearance='transparent'
-            onClick={togglePanel}
-            text=''
-          ></CalciteAction>
-        </div>
-      </div>
-    );
-  };
+
 
   return (
     <div className={styles.container}>
-      {getHeader()}
-      {countryData ? (
-        <motion.div layout='size' animate={{ height: visible ? 'auto' : 0 }} style={{ overflow: 'hidden' }}>
-          <CountriesMenu data={countryData}></CountriesMenu>
-        </motion.div>
-      ) : null}
+      <div className={styles.card}>
+        {selectedLandmark.id ?
+          <>
+            <p>{selectedLandmark.question}</p>
+            {selectedLandmark.options.map((option: string, index) =>
+              <div key={index} className={correctAnswer ? styles.noPointerEvents : ''}>
+                <input onClick={() => { if (index === selectedLandmark.answer) { setCorrectAnswer({ value: true }) } else { setCorrectAnswer({ value: false }) } }} type='radio' name="answer-option" id={`option-${index}`} />
+                <label htmlFor={`option-${index}`}>
+                  {option}
+                </label>
+              </div>
+            )}
+            {correctAnswer ? correctAnswer.value ? <p>You got it right! {selectedLandmark.explanation}</p> : <p>This time it's wrong. {selectedLandmark.explanation}</p> : null}
+          </> :
+          appLoaded ? renderIntro() : renderLoading()}
+      </div>
+
     </div>
   );
 };

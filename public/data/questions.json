@@ -1,0 +1,90 @@
+{
+  "landmarks": [
+    {
+      "id": 4,
+      "name": "The Sphynx and the Pyramids of Giza",
+      "questions": [
+        {
+          "question": "What did the original casing stones of the Great Pyramid look like?",
+          "options": ["Dull and rough", "Smooth and shiny", "Colorful and painted"],
+          "answer": 1,
+          "explanation": "The blocks of limestone were carved and polished down by hand to seamlessly fit together, forming a protective outer shell on each pyramid that shines."
+        },
+        {
+          "question": "What body parts does the Sphinx have?",
+          "options": [
+            "A human head and lion's body",
+            "A cat's head and human body",
+            "A lion's body and the wings of a bird"
+          ],
+          "answer": 0,
+          "explanation": "In Greek tradition, the sphinx is a merciless being with the head of a woman, the haunches of a lion, and the wings of a bird."
+        },
+        {
+          "question": "How many pyramids are in Giza?",
+          "options": ["3", "7", "5"],
+          "answer": 0,
+          "explanation": "There are 3 main pyramids in Giza. It's a nice number, not too crowded, not too lonely!"
+        },
+        {
+          "question": "How tall was the Great Pyramid when it was originally built?",
+          "options": ["481 feet", "555 feet", "396 feet"],
+          "answer": 0,
+          "explanation": "The Great Pyramid was originally 481 feet tall and currently it has 454 feet. It shrunk over time; don't we all?"
+        },
+        {
+          "question": "Who is believed to have caused the damage to the Sphinx's nose?",
+          "options": ["Napoleon's soldiers", "Natural erosion", "A 14th-century Sufi"],
+          "answer": 2,
+          "explanation": "The Sufi found the local peasants making offerings to the Sphinx for a good harvest. He defaced the Sphinx as an act of colonialism."
+        }
+      ]
+    },
+    {
+      "name": "Statue of Liberty",
+      "id": 1,
+      "questions": [
+        {
+          "question": "What's the Statue of Liberty's favorite pastime during thunderstorms?",
+          "options": ["Singing 'Rain, Rain, Go Away'", "Getting struck by lightning", "Wearing a raincoat"],
+          "answer": 1,
+          "explanation": "The Statue of Liberty acts as a lightning rod, and is struck by lightning about 600 times a year!"
+        },
+        {
+          "question": "How many steps does it take to get to the Statue of Liberty's crown?",
+          "options": ["100 steps", "354 steps", "500 steps"],
+          "answer": 1,
+          "explanation": "It takes 354 steps to reach the crown of the Statue of Liberty, so make sure to wear comfy shoes!"
+        },
+        {
+          "question": "What was Lady Liberty's original color?",
+          "options": ["Green", "Copper", "Gold"],
+          "answer": 1,
+          "explanation": "The Statue of Liberty was originally a shiny copper color. The green patina is the result of oxidation over the years."
+        },
+        {
+          "question": "What does the Statue of Liberty have in common with the Eiffel Tower?",
+          "options": [
+            "Both were designed by the same architect",
+            "Both were originally intended for a different city",
+            "Both have the same height"
+          ],
+          "answer": 1,
+          "explanation": "Both the Statue of Liberty and the Eiffel Tower were designed by French engineers, and originally, the Eiffel Tower was intended for Barcelona, Spain, while the Statue of Liberty was intended for Egypt!"
+        },
+        {
+          "question": "What is the inscription on the tablet that the Statue of Liberty holds?",
+          "options": ["The Bill of Rights", "The Declaration of Independence", "The date of American Independence"],
+          "answer": "The date of American Independence (July 4, 1776)",
+          "explanation": "The tablet in the Statue of Liberty's left hand holds the date of American Independence: July 4, 1776."
+        },
+        {
+          "question": "What does the torch of the Statue of Liberty symbolize?",
+          "options": ["Enlightenment", "Hope", "The Olympic Games"],
+          "answer": "Enlightenment",
+          "explanation": "The torch held high by the Statue of Liberty symbolizes enlightenment, guiding the way to freedom and knowledge."
+        }
+      ]
+    }
+  ]
+}
