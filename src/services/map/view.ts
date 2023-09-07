@@ -2,7 +2,7 @@
 import { AppDispatch } from '../../store/storeConfiguration';
 import { setViewLoaded } from '../../store/loadingSlice';
 import { setError } from '../../store/errorSlice';
-import { initializeLandmarksLayer } from './landmarksLayerInit';
+import { initializeLandmarksLayer } from './landmarksLayer';
 import { initializeViewEventListeners } from './eventListeners';
 import SceneView from '@arcgis/core/views/SceneView';
 import WebScene from '@arcgis/core/WebScene';

@@ -5,7 +5,7 @@ import { layerConfig } from '../config';
 import { setError } from '../store/errorSlice';
 import { setCountryToHashParameters } from '../utils/URLHashParams';
 import { getRandomLandmarkQuestion } from './questions/questionsInterface';
-import { getLandmarksLayer } from './map/landmarksLayerInit';
+import { getLandmarksLayer } from './map/landmarksLayer';
 import { getView } from './map/view';
 
 export const selectRandomLandmark = () => async (dispatch: AppDispatch) => {
