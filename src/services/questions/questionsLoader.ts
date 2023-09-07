@@ -1,7 +1,7 @@
-import { AppDispatch } from '../../storeConfiguration';
-import { setQuestionsLoaded } from '../app-loading/loadingSlice';
+import { AppDispatch } from '../../store/storeConfiguration';
+import { setQuestionsLoaded } from '../../store/loadingSlice';
 import { setQuestionsData } from './questionsInterface';
-import { setError } from '../error-messaging/errorSlice';
+import { setError } from '../../store/errorSlice';
 
 export const fetchQuestions = () => async (dispatch: AppDispatch) => {
   try {

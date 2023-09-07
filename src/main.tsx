@@ -1,5 +1,4 @@
 import { createRoot } from 'react-dom/client';
-import { StrictMode } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import { setAssetPath } from '@esri/calcite-components/dist/components';
@@ -8,16 +7,14 @@ import './main.css';
 
 import App from './components/App';
 import { store } from './store/storeConfiguration';
-import { fetchQuestions } from './store/services/questions/questionsLoadingThunk';
+import { fetchQuestions } from './services/questions/questionsLoader';
 
 store.dispatch(fetchQuestions());
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
-  <StrictMode>
-    <ReduxProvider store={store}>
-      <App></App>
-    </ReduxProvider>
-  </StrictMode>
+  <ReduxProvider store={store}>
+    <App></App>
+  </ReduxProvider>
 );

@@ -1,15 +1,15 @@
-import { setSelectedLandmark } from './landmarkSelectionSlice';
-import { getGlobalView } from '../../globals';
-import { AppDispatch } from '../../storeConfiguration';
+import { setSelectedLandmark } from '../store/landmarkSelectionSlice';
+import { AppDispatch } from '../store/storeConfiguration';
 import { Extent, Mesh, Polygon } from '@arcgis/core/geometry';
-import { layerConfig } from '../../../config';
-import { setError } from '../error-messaging/errorSlice';
-import { setCountryToHashParameters } from '../../../utils/URLHashParams';
-import { getRandomLandmarkQuestion } from '../questions/questionsInterface';
-import { getLandmarksLayer } from '../map/landmarksLayerInit';
+import { layerConfig } from '../config';
+import { setError } from '../store/errorSlice';
+import { setCountryToHashParameters } from '../utils/URLHashParams';
+import { getRandomLandmarkQuestion } from './questions/questionsInterface';
+import { getLandmarksLayer } from './map/landmarksLayerInit';
+import { getView } from './map/view';
 
 export const selectRandomLandmark = () => async (dispatch: AppDispatch) => {
-    const view = getGlobalView();
+    const view = getView();
     const landmarksLayer = getLandmarksLayer();
     const landmark = getRandomLandmarkQuestion();
 

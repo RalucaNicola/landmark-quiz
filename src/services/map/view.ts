@@ -1,7 +1,7 @@
-import { setGlobalView } from '../../globals';
-import { AppDispatch } from '../../storeConfiguration';
-import { setViewLoaded } from '../app-loading/loadingSlice';
-import { setError } from '../error-messaging/errorSlice';
+
+import { AppDispatch } from '../../store/storeConfiguration';
+import { setViewLoaded } from '../../store/loadingSlice';
+import { setError } from '../../store/errorSlice';
 import { initializeLandmarksLayer } from './landmarksLayerInit';
 import { initializeViewEventListeners } from './eventListeners';
 import SceneView from '@arcgis/core/views/SceneView';
@@ -9,6 +9,22 @@ import WebScene from '@arcgis/core/WebScene';
 import { setLowPolyLayers } from './lowPolyLayers';
 import { Point } from '@arcgis/core/geometry';
 
+let view: SceneView = null;
+
+export function setView(sceneView: SceneView) {
+    view = sceneView;
+}
+
+export function getView() {
+    return view;
+}
+
+export function destroyView() {
+    if (view) {
+        view.destroy();
+        view = null;
+    }
+}
 
 export const initializeView = (divRef: HTMLDivElement) => async (dispatch: AppDispatch) => {
     try {
@@ -62,7 +78,7 @@ export const initializeView = (divRef: HTMLDivElement) => async (dispatch: AppDi
         });
 
         await view.when(async () => {
-            setGlobalView(view);
+            setView(view);
             const lowPolyLayersLoaded = await setLowPolyLayers(view);
             const landmarksLayerLoaded = await initializeLandmarksLayer(view);
             if (lowPolyLayersLoaded && landmarksLayerLoaded) {

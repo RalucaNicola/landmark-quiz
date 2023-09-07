@@ -1,6 +1,6 @@
-import { AppDispatch } from "../../storeConfiguration";
-import { layerConfig } from "../../../config";
-import { getCountryFromHashParameters } from "../../../utils/URLHashParams";
+import { AppDispatch } from "../../store/storeConfiguration";
+import { layerConfig } from "../../config";
+import { getCountryFromHashParameters } from "../../utils/URLHashParams";
 import SceneLayer from "@arcgis/core/layers/SceneLayer";
 import SceneView from "@arcgis/core/views/SceneView";
 
