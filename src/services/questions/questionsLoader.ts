@@ -2,6 +2,7 @@ import { AppDispatch } from '../../store/storeConfiguration';
 import { setQuestionsLoaded } from '../../store/loadingSlice';
 import { setQuestionsData } from './questionsInterface';
 import { setError } from '../../store/errorSlice';
+import { setLoadingStatus } from '../loader';
 
 export const fetchQuestions = () => async (dispatch: AppDispatch) => {
   try {
@@ -10,7 +11,7 @@ export const fetchQuestions = () => async (dispatch: AppDispatch) => {
     console.log(questionsData);
     if (questionsData) {
       setQuestionsData(questionsData);
-      dispatch(setQuestionsLoaded(true));
+      dispatch(setLoadingStatus({ questionsLoaded: true }));
     }
   } catch (error) {
     dispatch(

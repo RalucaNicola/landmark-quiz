@@ -8,6 +8,7 @@ import SceneView from '@arcgis/core/views/SceneView';
 import WebScene from '@arcgis/core/WebScene';
 import { setLowPolyLayers } from './lowPolyLayers';
 import { Point } from '@arcgis/core/geometry';
+import { setLoadingStatus } from '../loader';
 
 let view: SceneView = null;
 
@@ -82,7 +83,7 @@ export const initializeView = (divRef: HTMLDivElement) => async (dispatch: AppDi
             const lowPolyLayersLoaded = await setLowPolyLayers(view);
             const landmarksLayerLoaded = await initializeLandmarksLayer(view);
             if (lowPolyLayersLoaded && landmarksLayerLoaded) {
-                dispatch(setViewLoaded(true));
+                dispatch(setLoadingStatus({ viewLoaded: true }));
             }
             (window as any).view = view;
             //dispatch(initializeViewEventListeners());

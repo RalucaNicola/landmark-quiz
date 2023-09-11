@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export enum AppMode {
+    Load,
+    Intro,
+    TravelToQuestion,
+    AskQuestion,
+    AnswerQuestion,
+    NextQuestion,
     Explore,
-    Question,
     Menu
 }
 
-const initialState = AppMode.Menu;
+const initialState = AppMode.Load;
 
 const appModeSlice = createSlice({
     name: 'mode',

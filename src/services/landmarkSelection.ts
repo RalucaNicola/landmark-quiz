@@ -7,6 +7,7 @@ import { setCountryToHashParameters } from '../utils/URLHashParams';
 import { getRandomLandmarkQuestion } from './questions/questionsInterface';
 import { getLandmarksLayer } from './map/landmarksLayer';
 import { getView } from './map/view';
+import { AppMode, setMode } from '../store/appModeSlice';
 
 export const selectRandomLandmark = () => async (dispatch: AppDispatch) => {
     const view = getView();
@@ -19,6 +20,7 @@ export const selectRandomLandmark = () => async (dispatch: AppDispatch) => {
         const { geometry } = features[0];
         await view.goTo({ target: geometry.extent as Extent, tilt: 45 });
         dispatch(setSelectedLandmark(landmark));
+        dispatch(setMode(AppMode.AskQuestion));
     }
 
     // if (view) {

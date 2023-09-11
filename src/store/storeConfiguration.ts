@@ -4,13 +4,15 @@ import loadingReducer from './loadingSlice';
 import errorReducer from './errorSlice';
 import modalOptionsReducer from './modalSlice';
 import appModeReducer from './appModeSlice';
+import questionManagerReducer from './questionManagerSlice';
 
 const rootReducer = combineReducers({
   error: errorReducer,
   loading: loadingReducer,
   landmarkSelection: landmarkSelectionReducer,
   infoModal: modalOptionsReducer,
-  appMode: appModeReducer
+  appMode: appModeReducer,
+  questionManager: questionManagerReducer
 });
 
 export const store = configureStore({
