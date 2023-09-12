@@ -16,6 +16,10 @@ export interface Landmark {
 
 let landmarks: Landmark[] | null = null;
 
+export const getTotalNumberOfLandmarks = () => {
+    return landmarks.length;
+};
+
 export function setQuestionsData(data: { landmarks: Landmark[] }) {
     landmarks = data.landmarks.map((landmark) => {
         return {

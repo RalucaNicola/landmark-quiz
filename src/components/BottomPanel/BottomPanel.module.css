@@ -12,30 +12,43 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: var(--padding);
+  overflow: auto;
 }
-.card p {
-  text-align: center;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
+.answer {
   margin-top: var(--margin);
+  margin-bottom: var(--margin);
 }
 
-.menuButton {
-  composes: background from '../../utils/utils.module.css';
-  border-radius: var(--border-radius);
+.question {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: var(--margin);
+}
+
+.explanation {
+  font-size: 0.8rem;
+}
+
+.roundButton {
+  background: var(--calcite-ui-brand-hover);
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
   border: var(--border);
-  padding: var(--padding);
+  padding: 0;
   color: var(--calcite-ui-text-1);
   font-size: var(--calcite-font-size--1);
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.noPointerEvents {
-  pointer-events: none;
+.next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 700px) {
@@ -44,5 +57,8 @@
   }
   .labelContainer {
     display: none;
+  }
+  .card {
+    width: min(600px, 90%);
   }
 }

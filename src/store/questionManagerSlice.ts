@@ -1,15 +1,17 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getTotalNumberOfLandmarks } from '../services/questions/questionsInterface';
 
 export interface QuestionManager {
   questionsAnswered: number,
   correctQuestions: number
-  gameFinished: boolean
+  gameFinished: boolean;
 }
 
 const initialState = {
   questionsAnswered: 0,
   correctQuestions: 0,
+  gameFinished: false
 } as QuestionManager;
 
 const questionManagerSlice = createSlice({
@@ -17,11 +19,15 @@ const questionManagerSlice = createSlice({
   initialState,
   reducers: {
     increaseQuestionsAnswered(state, param: PayloadAction<{ correct: boolean }>) {
-      state.questionsAnswered += 1;
+      const questionsAnswered = state.questionsAnswered + 1;
       if (param.payload.correct) {
         state.correctQuestions++;
       }
-    }
+      if (questionsAnswered === getTotalNumberOfLandmarks()) {
+        state.gameFinished = true;
+      }
+      state.questionsAnswered = questionsAnswered;
+    },
   }
 });
 

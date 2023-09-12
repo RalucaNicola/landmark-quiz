@@ -5,10 +5,7 @@ export enum AppMode {
     Intro,
     TravelToQuestion,
     AskQuestion,
-    AnswerQuestion,
-    NextQuestion,
-    Explore,
-    Menu
+    AnswerQuestion
 }
 
 const initialState = AppMode.Load;

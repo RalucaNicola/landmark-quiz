@@ -3,10 +3,11 @@ import { layerConfig } from "../../config";
 import { getCountryFromHashParameters } from "../../utils/URLHashParams";
 import SceneLayer from "@arcgis/core/layers/SceneLayer";
 import SceneView from "@arcgis/core/views/SceneView";
+import { setError } from "../../store/errorSlice";
 
 let landmarksLayer: SceneLayer = null;
 
-export const initializeLandmarksLayer = async (view: SceneView) => {
+export const initializeLandmarksLayer = (view: SceneView) => async (dispatch: AppDispatch) => {
     try {
         landmarksLayer = new SceneLayer({
             url: layerConfig.url
@@ -16,7 +17,8 @@ export const initializeLandmarksLayer = async (view: SceneView) => {
         await landmarksLayer.load();
         return true;
     } catch (error) {
-        console.error(error);
+        const { message } = error;
+        dispatch(setError({ name: 'Error loading layer', message: message }));
         return false;
     }
 

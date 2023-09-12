@@ -1,6 +1,5 @@
 
 import { AppDispatch } from '../../store/storeConfiguration';
-import { setViewLoaded } from '../../store/loadingSlice';
 import { setError } from '../../store/errorSlice';
 import { initializeLandmarksLayer } from './landmarksLayer';
 import { initializeViewEventListeners } from './eventListeners';
@@ -81,7 +80,7 @@ export const initializeView = (divRef: HTMLDivElement) => async (dispatch: AppDi
         await view.when(async () => {
             setView(view);
             const lowPolyLayersLoaded = await setLowPolyLayers(view);
-            const landmarksLayerLoaded = await initializeLandmarksLayer(view);
+            const landmarksLayerLoaded = await dispatch(initializeLandmarksLayer(view));
             if (lowPolyLayersLoaded && landmarksLayerLoaded) {
                 dispatch(setLoadingStatus({ viewLoaded: true }));
             }

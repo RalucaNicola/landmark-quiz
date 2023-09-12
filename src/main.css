@@ -1,4 +1,24 @@
 @import 'https://js.arcgis.com/4.27/@arcgis/core/assets/esri/themes/dark/main.css';
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500;800&display=swap');
+
+.calcite-mode-light,
+:root {
+  --calcite-ui-brand: rgb(237, 42, 130);
+  --calcite-ui-brand-hover: rgb(247, 144, 191);
+  --calcite-ui-component-radio-border-checked: rgb(237, 42, 130);
+  --border-radius: 5px;
+  --border: 2px solid var(--calcite-ui-brand);
+  --box-shadow: 0 4px 0 var(--calcite-ui-brand);
+  --margin: 15px;
+  --padding: 15px;
+  --background-color: rgb(255, 243, 248);
+  --calcite-font-size--1: 1.1rem;
+  --calcite-ui-text-1: rgb(50, 50, 50);
+  --calcite-ui-text-2: rgb(75, 75, 75);
+  --calcite-ui-text-3: rgb(100, 100, 100);
+  --calcite-label-margin-bottom: 6px;
+  --calcite-sans-family: 'Dosis', sans-serif;
+}
 
 html,
 body,
@@ -8,25 +28,10 @@ body,
   height: 100%;
   width: 100%;
   font-family: var(--calcite-sans-family);
+  letter-spacing: 1px;
+  font-size: var(--calcite-font-size--1);
   color: var(--calcite-ui-text-1);
   background: #000;
-}
-
-.calcite-mode-dark,
-:root {
-  --calcite-ui-brand: rgb(0, 217, 109);
-  --calcite-ui-brand-hover: #04532c;
-  --border-radius: 5px;
-  --border: 2px solid rgb(237, 42, 130);
-  --box-shadow: 4px 4px 0 rgb(237, 42, 130);
-  --margin: 15px;
-  --padding: 15px;
-  --background-color: rgba(254, 215, 232, 1);
-  --calcite-font-size--1: 0.85rem;
-  --calcite-ui-text-1: rgb(230, 230, 230);
-  --calcite-ui-text-2: rgb(210, 210, 210);
-  --calcite-ui-text-3: rgb(150, 150, 150);
-  --calcite-label-margin-bottom: 0;
 }
 
 a {

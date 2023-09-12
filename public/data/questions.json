@@ -22,7 +22,7 @@
         },
         {
           "question": "How many pyramids are in Giza?",
-          "options": ["3", "7", "5"],
+          "options": ["Three", "Seven", "Five"],
           "answer": 0,
           "explanation": "There are 3 main pyramids in Giza. It's a nice number, not too crowded, not too lonely!"
         },
@@ -70,18 +70,18 @@
             "Both have the same height"
           ],
           "answer": 1,
-          "explanation": "Both the Statue of Liberty and the Eiffel Tower were designed by French engineers, and originally, the Eiffel Tower was intended for Barcelona, Spain, while the Statue of Liberty was intended for Egypt!"
+          "explanation": "Both the Statue of Liberty and the Eiffel Tower were designed by French engineers, but originally, the Eiffel Tower was intended for Barcelona, Spain, while the Statue of Liberty was intended for Egypt!"
         },
         {
           "question": "What is the inscription on the tablet that the Statue of Liberty holds?",
           "options": ["The Bill of Rights", "The Declaration of Independence", "The date of American Independence"],
-          "answer": "The date of American Independence (July 4, 1776)",
+          "answer": 2,
           "explanation": "The tablet in the Statue of Liberty's left hand holds the date of American Independence: July 4, 1776."
         },
         {
           "question": "What does the torch of the Statue of Liberty symbolize?",
           "options": ["Enlightenment", "Hope", "The Olympic Games"],
-          "answer": "Enlightenment",
+          "answer": 0,
           "explanation": "The torch held high by the Statue of Liberty symbolizes enlightenment, guiding the way to freedom and knowledge."
         }
       ]
